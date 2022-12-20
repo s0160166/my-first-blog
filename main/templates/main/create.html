@@ -1,0 +1,81 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+      <div class="row d-flex mx-sm-m3" style="justify-content: center;">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 order-1 px-sm-3">
+          <div class="h-200 py-3">
+            <h1 id="form1">Заполните данные для рассчёта:</h1>
+                <form method="post" id="form" >
+                    <div class = "d-flex flex-row mx-sm-m3" style="
+                    height:100px;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px;
+                    ">
+                        <legend style="
+                         width: 300px;
+                         height: 40px;
+                         vertical-align: baseline;
+                         text-align: left;
+                         background: rgba(138, 118, 118, 0.1);
+                         margin: 10px;
+                         ">Выберите пол:</legend>
+                        {% for radio in form.gender %}
+                        <div style="
+                        margin: 10px;
+                        font-size:20px;
+                        ">{{radio.choice_label}}</div>
+                        <span class="radio" style="
+                        margin: 10px;
+                        vertical-align: baseline;
+                        text-align: center;
+                        width: 30px;
+                        ">{{ radio.tag }}</span>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <legend for="date" style="color: black;">Дата рождения:</legend>
+                        {% csrf_token  %}
+                        {{ form.date_born }}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <legend for="date" style="color: black;">Остаток по ипотеке:</legend>
+                        {{ form.loan_balance }}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <legend for="date" style="color: black; height: 3em;">Сколько сигарет в день курите?</legend>
+                        {{ form.cigarets }}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <legend for="date" style="color: black; height: 6em;">Сколько порций алкоголя в день выпиваете?
+                            <p style="font-size: medium; text-align: left;">
+                            (Порция равна рюмке водки или кружке пива)
+                            </p>
+                        </legend>
+                        {{ form.alcogol}}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <legend for="date" style="color: black;">Выберите место работы:</legend>
+                        {{form.profession}}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <legend for="date" style="color: black;">Выберите хобби:</legend>
+                        {{form.hobby}}
+                    </div>
+                    <button type="submit" name="submit" value="Отправить" class="btn btn-success btn-md">Отправить</button>
+                </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+

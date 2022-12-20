@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; margin: 50px 0 50px 0;">Результаты:</h2>
+<div class = "d-flex flex-row flex-wrap mx-2 " style="justify-content: center;">
+    {% if results %}
+        {% for res in results%}
+            <div class = 'alert alert-warning' style="margin: 10px;">
+                <h3>Результат клиента №{{ res.id }}</h3>
+                <h5>Сумма годового талона:</h5>
+                <p>{{res.sum}}</p>
+            </div>
+        {% endfor %}
+    {% else%}
+        <p>Записей о результатах нет</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; margin: 50px 0 50px 0;">Пользователи:</h2>
+<div class = "d-flex flex-row flex-wrap mx-2" style="justify-content: center;">
+    {% if info %}
+        {% for inf in info%}
+            <div class = 'alert alert-warning' style="margin: 10px;">
+                <h3>Пользователь №{{ inf.id }}</h3>
+                <p>{{inf.gender}}</p>
+                <h5>Дата рождения:</h5>
+                <p>{{inf.date_born}}</p>
+                <h5>Полных лет</h5>
+                <p>{{inf.age}}</p>
+                <h5>Остаток по кредиту:</h5>
+                <p>{{inf.loan_balance}}</p>
+                <h5>Микромортов ежедневно из за сигарет:</h5>
+                <p>{{inf.cigarets}}</p>
+                <h5>Микромортов ежедневно из за алкоголя:</h5>
+                <p>{{inf.alcogol}}</p>
+                <h5>Микромортов ежедневно по работе:</h5>
+                <p>{{inf.profession}}</p>
+                <h5>Микромортов ежедневно из за хобби:</h5>
+                <p>{{inf.hobby}}</p>
+                <h5>Микромортов ежедневно всего:</h5>
+                <p>{{inf.micromorts}}</p>
+            </div>
+        {% endfor %}
+    {% else%}
+        <p>Записей о пользователях нет</p>
+    {% endif %}
+</div>
+{% endblock %}
